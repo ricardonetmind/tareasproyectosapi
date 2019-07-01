@@ -1,0 +1,38 @@
+#TEST
+curl localhost:8080/TareasProyectosJersey/rest/test
+curl localhost:8080/TareasProyectosJersey/rest/test/track -H "Accept: application/json" -v
+curl -X POST -d "{\"title\":\"Chelsey Hotel n2\",\"singer\":\"Leonard Cohen\"}" localhost:8080/TareasProyectosJersey/rest/test/tracks -H "Content-Type: application/json" -H "Accept: application/json" -v
+
+#AUTHENTICATE
+curl localhost:8080/TareasProyectosJersey/rest/authenticate -H "email: r@r.com" -H "password: ric" -X POST
+ 
+#USUARIOS
+curl localhost:8080/TareasProyectosJersey/rest/usuarios -v
+ 
+curl localhost:8080/TareasProyectosJersey/rest/usuarios/1 -v
+curl localhost:8080/TareasProyectosJersey/rest/usuarios/10 -v
+  
+curl -H "Content-Type: application/json" -X POST -d "{\"uid\":0,\"nombre\":\"Luis\",\"email\":\"l@l.com\",\"foto\":\"l.jpg\"}" localhost:8080/TareasProyectosJersey/rest/usuarios -v
+
+curl -H "Content-Type: application/json" -X PUT -d "{\"uid\":2,\"nombre\":\"Ana K.\",\"email\":\"a@a.com\",\"foto\":\"ak.jpg\"}" localhost:8080/TareasProyectosJersey/rest/usuarios -v
+
+curl -H "Content-Type: application/json" -X DELETE curl localhost:8080/TareasProyectosJersey/rest/usuarios/5 -v
+curl -H "Content-Type: application/json" -X DELETE curl localhost:8080/TareasProyectosJersey/rest/usuarios/15 -v
+
+#TAREAS
+curl localhost:8080/TareasProyectosJersey/rest/tareas -v
+
+curl -H "Content-Type: application/json" -X POST -d "{\"pid\":0,\"nombre\":\"Generar git\",\"duracion\":3.0,\"proyecto\":1}" localhost:8080/TareasProyectosJersey/rest/tareas -v
+
+curl -H "Content-Type: application/json" -X POST -d "{\"pid\":0,\"nombre\":\"Tomar requerimientos\",\"duracion\":20.0,\"proyecto\":2}" localhost:8080/TareasProyectosJersey/rest/tareas -v
+
+#PROYECTOS
+curl localhost:8080/TareasProyectosJersey/rest/proyectos -v
+
+curl -H "Content-Type: application/json" -X POST -d "{\"pid\":0,\"titulo\":\"Proyecto Nuevo\",\"fecha_inicio\":1556056800000,\"fecha_fin\":1549580400000}" localhost:8080/TareasProyectosJersey/rest/proyectos -v
+
+
+#FILES
+curl -F "file=@C:\temp\test2.pdf" http://localhost:8080/TareasProyectosJersey/rest/file/upload -v
+
+ curl http://localhost:8080/TareasProyectosJersey/rest/file/download?file=test2.pdf --output test2.pdf
